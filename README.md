@@ -1,77 +1,149 @@
-# React Native Clean Architecture
+# React Native Clean Architecture Template
 
-A professional React Native boilerplate implementing **Clean Architecture** principles. This project is designed for scalability, testability, and a clear separation of concerns.
-
-## 🏗️ Architecture Overview
-
-The project is organized into four main layers:
-
-### 1. **Domain Layer** (`src/domain`)
-The core of the application, containing business logic and rules.
-- **Entities**: Simple data objects agnostic of any external framework.
-- **Repositories**: Abstract interfaces defining data operations.
-- **UseCases**: (Optional) Specific business logic units.
-
-### 2. **Data Layer** (`src/data`)
-Responsible for data retrieval and persistence.
-- **Models**: Data objects with serialization/deserialization logic (JSON mapping).
-- **Providers**: Raw data sources (API clients, local storage).
-- **Repository Implementations**: Concrete implementations of domain repositories.
-
-### 3. **Presentation Layer** (`src/modules`)
-The UI layer organized by feature modules.
-- **Views**: React components and screens.
-- **ViewModels**: State and logic management using **Zustand**.
-
-### 4. **Core Layer** (`src/core`)
-Cross-cutting concerns and shared utilities.
-- **Network**: Configured Axios instance.
-- **Theme**: Centralized color and typography management.
-- **Widgets**: Reusable UI components.
+Production-ready React Native application demonstrating scalable architecture and real-world implementation using Clean Architecture principles.
 
 ---
 
-## 🛠️ Technology Stack
+## Overview
 
-- **Framework**: React Native (Bare Workflow)
-- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
-- **Networking**: [Axios](https://github.com/axios/axios)
-- **Navigation**: [React Navigation](https://reactnavigation.org/)
-- **Icons**: [Lucide React Native](https://lucide.dev/guide/packages/lucide-react-native)
-- **Language**: TypeScript
+This project serves as a reference architecture for building maintainable and scalable React Native applications. It enforces a clear separation of concerns across layers and promotes a modular, testable codebase.
 
 ---
 
-## 🚀 Getting Started
+## Features
 
-### Prerequisites
-- Node.js (>= 18)
-- Yarn or npm
-- CocoaPods (for iOS)
+* Clean Architecture
+* Modular feature-based structure
+* State management using Zustand
+* Repository pattern for data handling
+* Structured API integration
+* Reusable and scalable UI components
 
-### Installation
-1. Clone the repository.
-2. Install dependencies:
-   ```sh
-   yarn install
-   ```
-3. Install iOS pods:
-   ```sh
-   cd ios && pod install && cd ..
-   ```
+---
 
-### Running the App
-- **Android**: `yarn android`
-- **iOS**: `yarn ios`
+## Architecture
 
-## 📂 Project Structure
-```text
+* Clean Architecture
+* Repository Pattern
+* Feature-Based Modular Design
+
+---
+
+## Tech Stack
+
+* React Native (Bare Workflow)
+* TypeScript
+* Zustand (State Management)
+* Axios (Networking)
+* React Navigation
+
+---
+
+## Project Structure
+
+```id="rn-structure-modern"
 src/
-├── core/           # Theme, Network, Widgets, Constants
-├── domain/         # Entities, Repository Interfaces
-├── data/           # Models, Repository Impls, Providers
-├── modules/        # Feature modules (Auth, Home)
-│   ├── views/      # Screens
-│   └── viewmodels/ # State stores
+
+├── core/           # Shared utilities, network, theme, components
+├── domain/         # Business models and repository interfaces
+├── data/           # Models, providers, repository implementations
+├── modules/        # Feature-based modules (views + viewmodels)
 └── routes/         # Navigation configuration
 ```
+
+---
+
+## Layer Overview
+
+* **Core**: Shared utilities, network configuration, and reusable components
+* **Domain**: Business logic and repository contracts
+* **Data**: Handles API communication and data transformation
+* **Modules**: Feature-based UI and state management
+* **Routes**: Navigation setup and configuration
+
+---
+
+## Data Flow
+
+```id="rn-flow-modern"
+View → ViewModel → Repository → Provider → API
+```
+
+Response handling:
+
+```id="rn-response-flow"
+API → Model → Repository → Entity → ViewModel → View
+```
+
+---
+
+## Use Cases
+
+* Scalable mobile applications
+* Startup MVPs
+* Production systems requiring clean architecture
+* Projects needing modular and maintainable structure
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+* Node.js (>= 18)
+* Yarn or npm
+* CocoaPods (for iOS)
+
+---
+
+### Installation
+
+```bash id="rn-install"
+yarn install
+```
+
+For iOS:
+
+```bash id="rn-pods"
+cd ios && pod install && cd ..
+```
+
+---
+
+### Run the Application
+
+* Android:
+
+```bash id="rn-android"
+yarn android
+```
+
+* iOS:
+
+```bash id="rn-ios"
+yarn ios
+```
+
+---
+
+## Purpose
+
+This template provides a strong foundation for:
+
+* Clean and maintainable codebases
+* Scalable architecture
+* Consistent project structure
+* Faster development setup
+
+---
+
+## Contributing
+
+Contributions are welcome. You can fork the repository and submit a pull request.
+
+---
+
+## License
+
+This project is licensed under the Apache-2.0 License.
+
