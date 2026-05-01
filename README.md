@@ -1,97 +1,77 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Clean Architecture
 
-# Getting Started
+A professional React Native boilerplate implementing **Clean Architecture** principles. This project is designed for scalability, testability, and a clear separation of concerns.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 🏗️ Architecture Overview
 
-## Step 1: Start Metro
+The project is organized into four main layers:
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### 1. **Domain Layer** (`src/domain`)
+The core of the application, containing business logic and rules.
+- **Entities**: Simple data objects agnostic of any external framework.
+- **Repositories**: Abstract interfaces defining data operations.
+- **UseCases**: (Optional) Specific business logic units.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### 2. **Data Layer** (`src/data`)
+Responsible for data retrieval and persistence.
+- **Models**: Data objects with serialization/deserialization logic (JSON mapping).
+- **Providers**: Raw data sources (API clients, local storage).
+- **Repository Implementations**: Concrete implementations of domain repositories.
 
-```sh
-# Using npm
-npm start
+### 3. **Presentation Layer** (`src/modules`)
+The UI layer organized by feature modules.
+- **Views**: React components and screens.
+- **ViewModels**: State and logic management using **Zustand**.
 
-# OR using Yarn
-yarn start
+### 4. **Core Layer** (`src/core`)
+Cross-cutting concerns and shared utilities.
+- **Network**: Configured Axios instance.
+- **Theme**: Centralized color and typography management.
+- **Widgets**: Reusable UI components.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Framework**: React Native (Bare Workflow)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **Networking**: [Axios](https://github.com/axios/axios)
+- **Navigation**: [React Navigation](https://reactnavigation.org/)
+- **Icons**: [Lucide React Native](https://lucide.dev/guide/packages/lucide-react-native)
+- **Language**: TypeScript
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (>= 18)
+- Yarn or npm
+- CocoaPods (for iOS)
+
+### Installation
+1. Clone the repository.
+2. Install dependencies:
+   ```sh
+   yarn install
+   ```
+3. Install iOS pods:
+   ```sh
+   cd ios && pod install && cd ..
+   ```
+
+### Running the App
+- **Android**: `yarn android`
+- **iOS**: `yarn ios`
+
+## 📂 Project Structure
+```text
+src/
+├── core/           # Theme, Network, Widgets, Constants
+├── domain/         # Entities, Repository Interfaces
+├── data/           # Models, Repository Impls, Providers
+├── modules/        # Feature modules (Auth, Home)
+│   ├── views/      # Screens
+│   └── viewmodels/ # State stores
+└── routes/         # Navigation configuration
 ```
-
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
